@@ -1,4 +1,4 @@
-Summary 01_Introduction to FE
+Summary Introduction to FE
 
 Front-end Web Developer adalah pengembangan antarmuka pengguna grafis dari sebuah situs web, melalui penggunaan HTML, CSS, dan JavaScript, sehingga pengguna dapat melihat dan berinteraksi dengan situs web tersebut.
 
