@@ -1,0 +1,1 @@
+Link Figma : https://www.figma.com/file/GR7VCPb8XTpxMlztxvtDjS/AlterraAcademy_Figma-Introduction-Interface-Dimension?type=design&node-id=0%3A1&mode=design&t=waVHv9gXhwv4DTrh-1
