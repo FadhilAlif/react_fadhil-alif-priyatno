@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_HTML_Alterra</title>
+</head>
+<body>
+    <div class="createProduct">
+        <h1>Create Product</h1>
+        <h2>Detail Product</h2>
+        <form>
+            <label for="product-name">Product Name :</label><br>
+            <input type="text" id="product-name" name="productName"><br>
+            <label for="product-category">Product Category :</label><br>
+            <select name="product-category" id="productCategory">
+                <option value="product-Prices">Product Prices</option>
+            </select>
+        </form>
+        <form>
+            <p>Product Freshness:</p>
+            <input type="radio" id="brand-new" name="product-fresh">
+            <label for="brand-new">Brand New</label><br>
+            <input type="radio" id="second-hand" name="product-fresh">
+            <label for="second-hand">Second Hand</label><br>
+            <input type="radio" id="refurbished" name="product-fresh">
+            <label for="refurbished">Refurbished</label>
+        </form>
+        <br>
+        <form>
+            <label for="image-of-product">Image of Product</label>
+            <input type="file" name="choose-file" id="choose-file">
+            <p><label for="additionalDesc">Additional Description</label></p>
+            <textarea id="additionalDesc" name="additionalDesc" rows="8" cols="40"></textarea>
+            <br>
+            <label for="product-name">Product Price :</label><br>
+            <input type="text" id="product-name" name="productName" placeholder="$ 100"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
