@@ -11,7 +11,7 @@
         <h2>Detail Product</h2>
         <form>
             <label for="product-name">Product Name :</label><br>
-            <input type="text" id="product-name" name="productName"><br>
+            <input type="text" id="product-name" name="productName" required minlength="6" maxlength="50"><br>
             <label for="product-category">Product Category :</label><br>
             <select name="product-category" id="productCategory">
                 <option value="product-Prices">Product Prices</option>
@@ -34,7 +34,7 @@
             <textarea id="additionalDesc" name="additionalDesc" rows="8" cols="40"></textarea>
             <br>
             <label for="product-name">Product Price :</label><br>
-            <input type="text" id="product-name" name="productName" placeholder="$ 100"><br>
+            <input type="number" id="product-name" name="productName" placeholder="$ 100" required><br>
             <input type="submit" value="Submit">
         </form>
     </div>
