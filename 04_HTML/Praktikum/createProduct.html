@@ -8,35 +8,43 @@
 <body>
     <div class="createProduct">
         <h1>Create Product</h1>
+        <form id="createAccountForm" action="landingPage.html" method="post"></form>
         <h2>Detail Product</h2>
         <form>
             <label for="product-name">Product Name :</label><br>
             <input type="text" id="product-name" name="productName" required minlength="6" maxlength="50"><br>
             <label for="product-category">Product Category :</label><br>
             <select name="product-category" id="productCategory">
-                <option value="product-Prices">Product Prices</option>
+                <option value="blank"></option>
+                <option value="clothes">Clothes</option>
+                <option value="shoes">Shoes</option>
+                <option value="pants">Pants</option>
             </select>
         </form>
-        <form>
-            <p>Product Freshness:</p>
-            <input type="radio" id="brand-new" name="product-fresh">
-            <label for="brand-new">Brand New</label><br>
-            <input type="radio" id="second-hand" name="product-fresh">
-            <label for="second-hand">Second Hand</label><br>
-            <input type="radio" id="refurbished" name="product-fresh">
-            <label for="refurbished">Refurbished</label>
-        </form>
-        <br>
-        <form>
-            <label for="image-of-product">Image of Product</label>
-            <input type="file" name="choose-file" id="choose-file">
-            <p><label for="additionalDesc">Additional Description</label></p>
-            <textarea id="additionalDesc" name="additionalDesc" rows="8" cols="40"></textarea>
-            <br>
-            <label for="product-name">Product Price :</label><br>
-            <input type="number" id="product-name" name="productName" placeholder="$ 100" required><br>
-            <input type="submit" value="Submit">
-        </form>
     </div>
+    <div>
+        <form>
+        <p>Product Freshness:</p>
+                <input type="radio" id="brand-new" name="product-fresh">
+                <label for="brand-new">Brand New</label><br>
+                <input type="radio" id="second-hand" name="product-fresh">
+                <label for="second-hand">Second Hand</label><br>
+                <input type="radio" id="refurbished" name="product-fresh">
+                <label for="refurbished">Refurbished</label>
+            </form>
+            <br>
+    </div>
+</div>
+    <form>
+        <label for="image-of-product">Image of Product</label>  
+        <input type="file" name="choose-file" id="choose-file">
+        <p><label for="additionalDesc">Additional Description</label></p>
+        <textarea id="additionalDesc" name="additionalDesc" rows="8" cols="40"></textarea>
+        <br>
+        <label for="product-name">Product Price :</label><br>
+        <input type="number" id="product-name" name="productName" placeholder="$ 100" required><br>
+        <input type="submit" value="Submit">
+    </form>
+<div>        
 </body>
 </html>
