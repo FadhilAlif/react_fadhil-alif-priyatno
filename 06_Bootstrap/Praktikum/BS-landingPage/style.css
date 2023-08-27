@@ -31,7 +31,7 @@
 }
 
 #hero .btn-get-started {
-    font-family: "Jost", sans-serif;
+    font-family: Jost, sans-serif;
     font-weight: 500;
     font-size: 16px;
     letter-spacing: 1px;
@@ -89,12 +89,12 @@
     padding: 0;
     line-height: 1;
     font-weight: 600;
-    color: #37517e;
+    color: var(--sec-color);
   }
   
   #footer .footer-newsletter form {
     margin-top: 30px;
-    background: #fff;
+    background:var(--main-color);
     padding: 6px 10px;
     position: relative;
     border-radius: 50px;
@@ -129,7 +129,7 @@
   
   #footer .footer-top {
     padding: 60px 0 30px 0;
-    background: #fff;
+    background: var(--main-color);
   }
   
   #footer .footer-top .footer-contact {
@@ -143,21 +143,21 @@
     line-height: 1;
     text-transform: uppercase;
     font-weight: 600;
-    color: #37517e;
+    color: var(--sec-color);
   }
   
   #footer .footer-top .footer-contact p {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 0;
-    font-family: "Jost", sans-serif;
+    font-family: Jost, sans-serif;
     color: #5e5e5e;
   }
   
   #footer .footer-top h4 {
     font-size: 16px;
     font-weight: bold;
-    color: #37517e;
+    color: var(--sec-color);
     position: relative;
     padding-bottom: 12px;
   }
@@ -174,7 +174,7 @@
   
   #footer .footer-top .footer-links ul i {
     padding-right: 2px;
-    color: #47b2e4;
+    color:var(--button-color);
     font-size: 18px;
     line-height: 1;
   }
@@ -198,14 +198,14 @@
   
   #footer .footer-top .footer-links ul a:hover {
     text-decoration: none;
-    color: #47b2e4;
+    color: var(--button-color);
   }
   
   #footer .footer-top .social-links a {
     font-size: 18px;
     display: inline-block;
-    background: #47b2e4;
-    color: #fff;
+    background: var(--button-color);
+    color: var(--main-color);
     line-height: 1;
     padding: 8px 0;
     margin-right: 4px;
