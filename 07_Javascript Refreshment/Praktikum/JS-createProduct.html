@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CreateProduct</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Navbar Start-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Simple Header</a>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Container Start -->
+    <div class="container" style="padding-top: 64px">
+      <section class="main">
+        <div class="py-5 text-center" style="padding: 0px 42px">
+          <img
+            class="d-block mx-auto mb-4"
+            src="./img/bootstrap-logo.png"
+            alt="logo-bootstrap"
+            width="72"
+            height="57"
+          />
+          <h2>Create Product</h2>
+          <p class="lead">
+            Below is an example form built entirely with Bootstrap's form
+            controls. Each required form group has a validation state that can
+            be triggered by attempting to submit the form without completing it.
+          </p>
+        </div>
+
+        <section class="content" style="padding: 0px 120px">
+          <div class="row">
+            <h4 class="mb-4">Detail Product</h4>
+
+            <form
+              id="form"
+              class="myForm was-validated"
+              novalidate
+              action=""
+              method="get"
+            >
+              <div class="col-sm-5 mb-4">
+                <label for="productName" class="form-label">Product Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="productName"
+                  required
+                />
+                <div class="invalid-feedback">Please add a product name.</div>
+              </div>
+
+              <div class="mb-4 col-sm-4">
+                <label for="productCategory" class="form-label"
+                  >Product Category</label
+                >
+                <select class="form-select" id="productCategory" required>
+                  <option value="">Choose...</option>
+                  <option value="Sneakers">Sneakers</option>
+                  <option value="Clothes">Clothes</option>
+                  <option value="Bag">Bag</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please choose product category.
+                </div>
+              </div>
+
+              <div class="mb-3 col-sm-4">
+                <label for="imageOfProduct" class="form-label"
+                  >Image of Product</label
+                >
+                <input
+                  id="imageOfProduct"
+                  type="file"
+                  class="form-control"
+                  required
+                />
+                <div class="invalid-feedback">Please input file.</div>
+              </div>
+
+              <div class="mb-4" id="productFreshness">
+                <label class="mb-1" for="Product Freshness"
+                  >Product Freshness</label
+                >
+                <div class="form-check">
+                  <label class="form-check-label" for="flexRadioDefault1"
+                    >Brand New</label
+                  >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    required
+                    data-toggle="invalid"
+                  />
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label" for="flexRadioDefault2"
+                    >Second Hand</label
+                  >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                    required
+                    data-toggle="invalid"
+                  />
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label" for="flexRadioDefault3"
+                    >Refurbished</label
+                  >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault3"
+                    required
+                    data-toggle="invalid"
+                  />
+                  <div class="invalid-feedback">Please select one option.</div>
+                </div>
+              </div>
+
+              <div class="mb-5">
+                <label for="additionalDesc" class="form-label"
+                  >Additional Description</label
+                >
+                <textarea
+                  class="form-control"
+                  id="additionalDesc"
+                  placeholder=""
+                  style="height: 180px"
+                  required
+                ></textarea>
+                <div class="invalid-feedback">Please enter a description.</div>
+              </div>
+
+              <div class="mb-5">
+                <label for="productPrices" class="form-label"
+                  >Product Price</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="productPrices"
+                  placeholder="$ 1"
+                  required
+                />
+                <div class="invalid-feedback">Please enter a number.</div>
+              </div>
+
+              <div class="d-grid mb-5" style="padding-top: 120px">
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section class="table">
+          <table
+            class="table table-striped table-responsive"
+            id="tableListProduct"
+          >
+            <h2 for="listProduct" class="text-center mb-4">List Product</h2>
+            <thead id="tableHead">
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Category</th>
+                <th scope="col">Image of Product</th>
+                <th scope="col">Product Freshness</th>
+                <th scope="col">Additional Desciption</th>
+                <th scope="col">Product Price</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </section>
+
+        <div class="col-3">
+          <input
+            class="form-control"
+            list="datalistOptions"
+            id="exampleDataList"
+            placeholder="Search by Product Name"
+          />
+          <datalist id="datalistOptions">
+            <option value="Lorem"></option>
+            <option value="Lorem"></option>
+            <option value="Lorem"></option>
+            <option value="Lorem"></option>
+          </datalist>
+        </div>
+
+        <div class="btn-group">
+          <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-primary" id="btn-delete" type="button">
+              Delete
+            </button>
+            <button class="btn btn-primary" id="btn-search" type="button">
+              Search
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Modal Test
+            </button>
+          </div>
+        </div>
+
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Ini adalah Modal
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                Modal bisa juga di sebut dengan pop up pada bootstrap adalah
+                kotak dialog yang biasa di gunakan untuk melakukan konfirmasi .
+                Selain itu modal juga bisa di gunakan untuk melakukan insert ,
+                delete, edit data dan form login .
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Container End -->
+
+    <!-- Script JS -->
+    <script src="main.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
