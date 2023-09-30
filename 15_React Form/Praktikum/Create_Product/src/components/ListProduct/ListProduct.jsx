@@ -1,5 +1,5 @@
 import Button from "../Button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ListProduct = ({ productsTable, setProductsTable }) => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
   };
 
   const handleClickDetail = (productId, product) => {
-    navigate(`/DataProduct/${productId}`, { state: { product } });
+    navigate(`/DataProduct/${productId}`, { state: product });
   };
 
   return (
@@ -29,7 +29,9 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
                 <th scope="col">No</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Product Category</th>
+                <th scope="col">Product Image</th>
                 <th scope="col">Product Freshness</th>
+                <th scope="col">Product Description</th>
                 <th scope="col">Product Price</th>
                 <th scope="col" colSpan={2}>
                   Action
@@ -40,21 +42,30 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
               {productsTable.map((product) => (
                 <tr key={product.productId}>
                   <td>
-                    <Link
-                      onClick={handleClickDetail(
-                        `${product.productId}`,
-                        product
-                      )}
-                    />
-                    {product.productId}
+                    <a
+                      onClick={() =>
+                        handleClickDetail(`${product.productId}`, product)
+                      }
+                    >
+                      {product.productId}
+                    </a>
                   </td>
                   <td>{product.productName}</td>
                   <td>{product.productCategory}</td>
+                  <td>
+                    <img
+                      src={product.productImage}
+                      style={{ width: "100px" }}
+                    ></img>
+                  </td>
                   <td>{product.productFreshness}</td>
+                  <td>{product.productDesc}</td>
                   <td>{product.productPrice}</td>
                   <td>
                     <div className="d-grid gap-2 d-md-flex">
                       <Button className="btn btn-secondary" label="Edit" />
+
+                      {/* Button Delete */}
                       <Button
                         onClick={() => handleDelete(product.productId)}
                         className="btn btn-danger"

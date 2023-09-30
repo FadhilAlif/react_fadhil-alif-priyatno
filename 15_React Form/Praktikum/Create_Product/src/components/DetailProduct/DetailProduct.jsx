@@ -26,7 +26,6 @@ const DetailProduct = ({ setProductsTable }) => {
   const [data, setData] = useState(formData);
   const [errors, setErrors] = useState(formErrors);
   // const [setProductFreshness] = useState(formData);
-  const error = {};
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -36,35 +35,76 @@ const DetailProduct = ({ setProductsTable }) => {
       ...prev,
       [name]: value,
     }));
+  };
 
-    if (name === "productName") {
-      if (value.length >= 10) {
-        alert("Product name must not exceed 10 characters");
-        error.productName = "Product name must not exceed 10 characters";
-      } else {
-        error.productName = "";
+  const [imageFile, setImageFile] = useState(null);
+  const allowedImageExtensions = ["jpg", "jpeg", "png", "gif"];
+  const maxImageSizeInBytes = 5242880; // 5MB
+
+  const handleImageInput = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const fileExtension = file.name.split(".").pop().toLowerCase();
+      if (!allowedImageExtensions.includes(fileExtension)) {
+        setErrors((prev) => ({
+          ...prev,
+          productImage: "Please select a valid image file (jpg, jpeg, png)",
+        }));
+        setImageFile(null);
+        return;
       }
-      setErrors(error);
+
+      if (file.size > maxImageSizeInBytes) {
+        setErrors((prev) => ({
+          ...prev,
+          productImage: "Image size exceeds 5MB limit",
+        }));
+        setImageFile(null);
+        return;
+      }
+
+      setImageFile(file);
+      setData((prev) => ({
+        ...prev,
+        productImage: URL.createObjectURL(file),
+      }));
+      setErrors((prev) => ({ ...prev, productImage: "" }));
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const productNameRegex = /^[a-zA-Z0-9]{1,10}$/;
+    const productPriceRegex = /^[0-9]+$/;
+
+    const error = {};
 
     if (!data.productName) {
       error.productName = "Please enter a valid product name";
+    } else if (!productNameRegex.test(data.productName)) {
+      error.productName =
+        "Product name must be alphanumeric and 1-10 characters long";
     }
+
     if (!data.productCategory) {
       error.productCategory = "Product Category is required";
     }
+
     if (!data.productImage) {
       error.productImage = "Product Image is required";
     }
+
     if (!data.productDesc) {
       error.productDesc = "Product Description is required";
     }
+
     if (!data.productPrice) {
       error.productPrice = "Product Price is required";
+    } else if (
+      !productPriceRegex.test(data.productPrice) ||
+      parseFloat(data.productPrice) <= 0
+    ) {
+      error.productPrice = "Please enter a valid positive product price";
     }
 
     setErrors(error);
@@ -72,7 +112,7 @@ const DetailProduct = ({ setProductsTable }) => {
     if (Object.keys(error).length === 0) {
       setProductsTable((prev) => [...prev, data]);
       setData((prev) => ({ ...prev, productId: uuidNum() }));
-      alert("Form submitted succesfully");
+      alert("Form submitted successfully");
       console.log(data);
     }
   };
@@ -132,18 +172,24 @@ const DetailProduct = ({ setProductsTable }) => {
           Image of Product
         </label>
         <input
-          className={`form-control ${
-            errors.productCategory ? "is-invalid" : ""
-          }`}
+          className={`form-control ${errors.productImage ? "is-invalid" : ""}`}
           name="productImage"
-          value={data.productImage}
           type="file"
-          onChange={handleInput}
+          accept="image/*"
+          onChange={handleImageInput}
         />
         <div id="imageError" className="text-danger">
           {errors.productImage}
         </div>
+        {data.productImage && (
+          <img
+            src={data.productImage}
+            alt="Product Image Preview"
+            style={{ width: "100px", marginTop: "20px" }}
+          />
+        )}
       </div>
+
       <div className="mb-4">
         <label className="form-label" htmlFor="productFreshness">
           Product Freshness
@@ -154,7 +200,6 @@ const DetailProduct = ({ setProductsTable }) => {
             name="productFreshness"
             className="form-check-input"
             type="radio"
-            defaultValue="Brand New"
             value="Brand New"
             checked={data.productFreshness === "Brand New"}
             onChange={handleInput}
@@ -169,7 +214,6 @@ const DetailProduct = ({ setProductsTable }) => {
             name="productFreshness"
             className="form-check-input"
             type="radio"
-            defaultValue="Second Hand"
             value="Second Hand"
             checked={data.productFreshness === "Second Hand"}
             onChange={handleInput}
@@ -184,7 +228,6 @@ const DetailProduct = ({ setProductsTable }) => {
             name="productFreshness"
             className="form-check-input"
             type="radio"
-            defaultValue="Refurbished"
             value="Refurbished"
             checked={data.productFreshness === "Refurbished"}
             onChange={handleInput}

@@ -1,8 +1,8 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const DataProduct = () => {
-  const { productId } = useParams();
-  console.log(productId);
+  // const { productId } = useLocation();
+  // console.log(productId);
   const { state } = useLocation();
   console.log(state);
   const product = state;
@@ -11,15 +11,18 @@ const DataProduct = () => {
 
   return (
     <>
-      <div className="text-center">
+      <div className="container">
         <h2>Detail Product</h2>
-        <h3>{productId}</h3>
-        <h5> Product Name : {product.product.productName}</h5>
-        <h5> Product Category : {product.product.productCategory}</h5>
-        <h5> Product Image : {product.product.productImage}</h5>
-        <h5> Product Freshness : {product.product.productFreshness}</h5>
-        <h5> Product Description : {product.product.productDesc}</h5>
-        <h5> Product Price : {product.product.productPrice}</h5>
+        <h3>{product.productId}</h3>
+        <h5> Product Name : {product.productName}</h5>
+        <h5> Product Category : {product.productCategory}</h5>
+        <h5>
+          Product Image :
+          <img src={product.productImage} style={{ width: "100px" }}></img>
+        </h5>
+        <h5> Product Freshness : {product.productFreshness}</h5>
+        <h5> Product Description : {product.productDesc}</h5>
+        <h5> Product Price : {product.productPrice}</h5>
       </div>
     </>
   );
