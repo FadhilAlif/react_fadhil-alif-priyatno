@@ -1,0 +1,232 @@
+:root {
+  --main-color: #ffffff;
+  --sec-color: #37517e;
+  --button-color: #47b2e4;
+  --bs-dark: #212529;
+}
+
+/* Hero Section */
+#hero {
+  width: 100%;
+  height: 760px;
+  background: var(--sec-color);
+}
+
+#hero .container {
+  padding-top: 72px;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: var(--main-color);
+}
+
+#hero h2 {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+
+#hero .btn-get-started {
+  font-family: Jost, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 11px 28px;
+  border-radius: 50px;
+  border: none;
+  margin: 10px 0 0 0;
+  color: var(--main-color);
+  background: var(--button-color);
+}
+
+#hero .btn-get-started:hover {
+  background: #77c4e7;
+}
+
+#hero .btn-watch-video {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0 0 25px;
+  color: var(--main-color);
+  line-height: 1;
+}
+
+#hero .btn-watch-video i {
+  line-height: 0;
+  color: var(--main-color);
+  font-size: 32px;
+  margin-right: 8px;
+}
+
+#hero .btn-watch-video:hover i {
+  color: var(--button-color);
+}
+/* Hero Section End */
+
+/* Footer*/
+#footer {
+  font-size: 14px;
+  background: #37517e;
+}
+
+#footer .footer-newsletter {
+  padding: 50px 0;
+  background: #f3f5fa;
+  text-align: center;
+  font-size: 15px;
+  color: #444444;
+}
+
+#footer .footer-newsletter h4 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--sec-color);
+}
+
+#footer .footer-newsletter form {
+  margin-top: 30px;
+  background: var(--main-color);
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 50px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.06);
+  text-align: left;
+}
+
+#footer .footer-newsletter form input[type="email"] {
+  border: none;
+  padding: 6px 10px;
+  width: calc(100% - 100px);
+}
+
+#footer .footer-newsletter form input[type="submit"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px;
+  background: var(--button-color);
+  color: var(--main-color);
+  border-radius: 50px;
+  box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+#footer .footer-newsletter form input[type="submit"]:hover {
+  background: #209dd8;
+}
+
+#footer .footer-top {
+  padding: 60px 0 30px 0;
+  background: var(--main-color);
+}
+
+#footer .footer-top .footer-contact {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-contact h3 {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--sec-color);
+}
+
+#footer .footer-top .footer-contact p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: Jost, sans-serif;
+  color: #5e5e5e;
+}
+
+#footer .footer-top h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--sec-color);
+  position: relative;
+  padding-bottom: 12px;
+}
+
+#footer .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: var(--button-color);
+  font-size: 18px;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+#footer .footer-top .footer-links ul a {
+  color: #777777;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+#footer .footer-top .footer-links ul a:hover {
+  text-decoration: none;
+  color: var(--button-color);
+}
+
+#footer .footer-top .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: var(--button-color);
+  color: var(--main-color);
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+}
+
+#footer .footer-bottom {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: var(--main-color);
+}
+
+#footer .copyright {
+  float: left;
+}
+
+#footer .design {
+  float: right;
+  font-size: 13px;
+}
+/* Footer End */
