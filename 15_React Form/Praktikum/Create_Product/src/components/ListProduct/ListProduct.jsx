@@ -62,6 +62,7 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
                   <td>{product.productDesc}</td>
                   <td>{product.productPrice}</td>
                   <td>
+                    {/* Button Edit */}
                     <div className="d-grid gap-2 d-md-flex">
                       <Button className="btn btn-secondary" label="Edit" />
 
@@ -71,6 +72,7 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
                         className="btn btn-danger"
                         label="Delete"
                       />
+                      {/* Button Detail */}
                       <Button
                         onClick={() =>
                           handleClickDetail(`${product.productId}`, product)
