@@ -10,14 +10,14 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
   const handleDelete = (id) => {
     if (window.confirm("Do you want to delete this product?")) {
       const filteredTable = productsTable.filter(
-        (product) => product.productId != id
+        (product) => product.id != id
       );
       setProductsTable([...filteredTable]);
     }
   };
 
-  const handleClickDetail = (productId, product) => {
-    navigate(`/DataProduct/${productId}`, { state: product });
+  const handleClickDetail = (id, product) => {
+    navigate(`/DataProduct/${id}`, { state: product });
   };
 
   return (
@@ -43,16 +43,16 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
               </tr>
             </thead>
             <tbody>
-              {data.length > 0 &&
-                data.map((product) => (
-                  <tr key={product.productId}>
+              {data.products.length > 0 &&
+                data.products.map((product) => (
+                  <tr key={product.id}>
                     <td>
                       <a
                         onClick={() =>
-                          handleClickDetail(`${product.productId}`, product)
+                          handleClickDetail(`${product.id}`, product)
                         }
                       >
-                        {product.productId}
+                        {product.id}
                       </a>
                     </td>
                     <td>{product.productName}</td>
@@ -72,7 +72,7 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
 
                         {/* Button Delete */}
                         <Button
-                          onClick={() => handleDelete(product.productId)}
+                          onClick={() => handleDelete(product.id)}
                           className="btn btn-danger"
                           label="Delete"
                         />

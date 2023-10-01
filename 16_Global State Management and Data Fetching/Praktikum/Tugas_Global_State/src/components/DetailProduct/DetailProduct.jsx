@@ -7,7 +7,7 @@ import { addProduct } from "../../redux/slice/productSlice";
 
 const DetailProduct = () => {
   const formData = {
-    productId: uuidNum(),
+    id: uuidNum(),
     productName: "",
     productCategory: "",
     productImage: "",
@@ -75,7 +75,7 @@ const DetailProduct = () => {
 
   const dispatch = useDispatch();
   const [productsTable, setProductsTable] = useState({
-    productId: uuidNum(),
+    id: uuidNum(),
     productName: "",
     productCategory: "",
     productImage: "",
@@ -123,7 +123,7 @@ const DetailProduct = () => {
 
     if (Object.keys(error).length === 0) {
       // setProductsTable((prev) => [...prev, data]);
-      setData((prev) => ({ ...prev, productId: uuidNum() }));
+      setData((prev) => ({ ...prev, id: uuidNum() }));
       alert("Form submitted successfully");
       console.log(data);
 

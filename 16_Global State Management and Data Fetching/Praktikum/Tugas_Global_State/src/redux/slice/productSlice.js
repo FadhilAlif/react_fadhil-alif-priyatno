@@ -10,7 +10,7 @@ export const productSlice = createSlice({
         productCategory: "Doe",
         productImage: "Doe",
         productFreshness: "Doe",
-        ProductDesc: "Doe",
+        productDesc: "Doe",
         productPrice: "Doe",
       },
     ],
@@ -27,14 +27,15 @@ export const productSlice = createSlice({
         productCategory: payload.productCategory,
         productImage: payload.productImage,
         productFreshness: payload.productFreshness,
-        ProductDesc: payload.ProductDesc,
+        productDesc: payload.productDesc,
         productPrice: payload.productPrice,
       };
       // push data ke state
       // state.push(article)
 
       // melakukan penyalinan data lama dengan data baru
-      return [...state.products, product];
+      // return [...state.products, product];
+      state.products.push(product)
     },
     editProduct() {
       // fungsi mengedit data article ke store
