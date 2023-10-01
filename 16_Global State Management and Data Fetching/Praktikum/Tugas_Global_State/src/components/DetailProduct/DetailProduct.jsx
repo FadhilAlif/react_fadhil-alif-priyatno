@@ -7,7 +7,7 @@ import { addProduct } from "../../redux/slice/productSlice";
 
 const DetailProduct = () => {
   const formData = {
-    productId: uuidNum(),
+    id: uuidNum(),
     productName: "",
     productCategory: "",
     productImage: "",
@@ -73,16 +73,16 @@ const DetailProduct = () => {
     }
   };
 
+  // const [productsTable, setProductsTable] = useState({
+  //   id: uuidNum(),
+  //   productName: "",
+  //   productCategory: "",
+  //   productImage: "",
+  //   productFreshness: "",
+  //   productDesc: "",
+  //   productPrice: "",
+  // });
   const dispatch = useDispatch();
-  const [productsTable, setProductsTable] = useState({
-    productId: uuidNum(),
-    productName: "",
-    productCategory: "",
-    productImage: "",
-    productFreshness: "",
-    productDesc: "",
-    productPrice: "",
-  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -123,7 +123,7 @@ const DetailProduct = () => {
 
     if (Object.keys(error).length === 0) {
       // setProductsTable((prev) => [...prev, data]);
-      setData((prev) => ({ ...prev, productId: uuidNum() }));
+      setData((prev) => ({ ...prev, id: uuidNum() }));
       alert("Form submitted successfully");
       console.log(data);
 
@@ -203,7 +203,6 @@ const DetailProduct = () => {
           />
         )}
       </div>
-
       <div className="mb-4">
         <label className="form-label" htmlFor="productFreshness">
           Product Freshness
