@@ -2,12 +2,10 @@ import { useState } from "react";
 import uuidNum from "react-uuid";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import { useDispatch } from "react-redux";
-import { addProduct } from "../../redux/slice/productSlice";
 
-const DetailProduct = () => {
+const DetailProduct = ({ setProductsTable }) => {
   const formData = {
-    id: uuidNum(),
+    productId: uuidNum(),
     productName: "",
     productCategory: "",
     productImage: "",
@@ -32,6 +30,7 @@ const DetailProduct = () => {
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
+    console.log("name " + name + " value " + value);
     setData((prev) => ({
       ...prev,
       [name]: value,
@@ -73,17 +72,6 @@ const DetailProduct = () => {
     }
   };
 
-  // const [productsTable, setProductsTable] = useState({
-  //   id: uuidNum(),
-  //   productName: "",
-  //   productCategory: "",
-  //   productImage: "",
-  //   productFreshness: "",
-  //   productDesc: "",
-  //   productPrice: "",
-  // });
-  const dispatch = useDispatch();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const productNameRegex = /^[a-zA-Z0-9]{1,10}$/;
@@ -122,12 +110,10 @@ const DetailProduct = () => {
     setErrors(error);
 
     if (Object.keys(error).length === 0) {
-      // setProductsTable((prev) => [...prev, data]);
-      setData((prev) => ({ ...prev, id: uuidNum() }));
+      setProductsTable((prev) => [...prev, data]);
+      setData((prev) => ({ ...prev, productId: uuidNum() }));
       alert("Form submitted successfully");
       console.log(data);
-
-      dispatch(addProduct(data));
     }
   };
 
@@ -203,6 +189,7 @@ const DetailProduct = () => {
           />
         )}
       </div>
+
       <div className="mb-4">
         <label className="form-label" htmlFor="productFreshness">
           Product Freshness

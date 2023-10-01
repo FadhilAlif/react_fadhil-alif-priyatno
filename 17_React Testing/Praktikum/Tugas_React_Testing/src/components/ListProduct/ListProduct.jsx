@@ -1,32 +1,19 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { deleteProduct } from "../../redux/slice/productslice";
-import { useState } from "react";
 import Button from "../Button/Button";
-import EditProduct from "../../pages/EditProduct/editProduct";
+import { useNavigate } from "react-router-dom";
 
-const ListProduct = () => {
+const ListProduct = ({ productsTable, setProductsTable }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const data = useSelector((state) => state.products);
-  console.log(data);
-
-  const [editProductId, setEditProductId] = useState(null);
-  const handleEdit = (id) => {
-    setEditProductId(id);
-  };
-
   const handleDelete = (id) => {
     if (window.confirm("Do you want to delete this product?")) {
-      // const filteredTable = productsTable.filter((product) => product.id != id);
-      // setProductsTable([...filteredTable]);
-      dispatch(deleteProduct(id));
+      const filteredTable = productsTable.filter(
+        (product) => product.productId != id
+      );
+      setProductsTable([...filteredTable]);
     }
   };
 
-  const handleClickDetail = (id, product) => {
-    navigate(`/DataProduct/${id}`, { state: product });
+  const handleClickDetail = (productId, product) => {
+    navigate(`/DataProduct/${productId}`, { state: product });
   };
 
   return (
@@ -52,50 +39,51 @@ const ListProduct = () => {
               </tr>
             </thead>
             <tbody>
-              {data.products.length > 0 &&
-                data.products.map((product) => (
-                  <tr key={product.id}>
-                    <td>{product.id}</td>
-                    <td>{product.productName}</td>
-                    <td>{product.productCategory}</td>
-                    <td>
-                      <img
-                        src={product.productImage}
-                        style={{ width: "100px" }}
-                      ></img>
-                    </td>
-                    <td>{product.productFreshness}</td>
-                    <td>{product.productDesc}</td>
-                    <td>{product.productPrice}</td>
-                    <td>
-                      <div className="d-grid gap-2 d-md-flex">
-                        {/* Button Edit */}
-                        <Button
-                          className="btn btn-secondary"
-                          label="Edit"
-                          onClick={() => handleEdit(product.id)}
-                        />
-                        {/* Button Delete */}
-                        <Button
-                          onClick={() => handleDelete(product.id)}
-                          className="btn btn-danger"
-                          label="Delete"
-                        />
-                        {/* Button Detail */}
-                        <Button
-                          className="btn btn-info text-white"
-                          label="Detail"
-                          onClick={() =>
-                            handleClickDetail(`${product.id}`, product)
-                          }
-                        />
-                      </div>
-                      {editProductId && (
-                        <EditProduct productId={editProductId} />
-                      )}
-                    </td>
-                  </tr>
-                ))}
+              {productsTable.map((product) => (
+                <tr key={product.productId}>
+                  <td>
+                    <a
+                      onClick={() =>
+                        handleClickDetail(`${product.productId}`, product)
+                      }
+                    >
+                      {product.productId}
+                    </a>
+                  </td>
+                  <td>{product.productName}</td>
+                  <td>{product.productCategory}</td>
+                  <td>
+                    <img
+                      src={product.productImage}
+                      style={{ width: "100px" }}
+                    ></img>
+                  </td>
+                  <td>{product.productFreshness}</td>
+                  <td>{product.productDesc}</td>
+                  <td>{product.productPrice}</td>
+                  <td>
+                    {/* Button Edit */}
+                    <div className="d-grid gap-2 d-md-flex">
+                      <Button className="btn btn-secondary" label="Edit" />
+
+                      {/* Button Delete */}
+                      <Button
+                        onClick={() => handleDelete(product.productId)}
+                        className="btn btn-danger"
+                        label="Delete"
+                      />
+                      {/* Button Detail */}
+                      <Button
+                        onClick={() =>
+                          handleClickDetail(`${product.productId}`, product)
+                        }
+                        className="btn btn-info text-white"
+                        label="Detail"
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </section>
