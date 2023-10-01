@@ -11,7 +11,7 @@ export const productSlice = createSlice({
         productImage: "Doe",
         productFreshness: "Doe",
         productDesc: "Doe",
-        productPrice: "Doe",
+        productPrice: 0,
       },
     ],
   },
