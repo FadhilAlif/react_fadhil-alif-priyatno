@@ -71,6 +71,13 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
                         className="btn btn-danger"
                         label="Delete"
                       />
+                      <Button
+                        onClick={() =>
+                          handleClickDetail(`${product.productId}`, product)
+                        }
+                        className="btn btn-info text-white"
+                        label="Detail"
+                      />
                     </div>
                   </td>
                 </tr>
