@@ -49,23 +49,33 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
                     <td>
                       <a
                         onClick={() =>
-                          handleClickDetail(`${product.productId}`, product)
+                          handleClickDetail(product.productId, product)
                         }
                       >
                         {product.productId}
                       </a>
                     </td>
-                    <td>{product.productName}</td>
-                    <td>{product.productCategory}</td>
-                    <td>
+                    <td key={`name-${product.productId}`}>
+                      {product.productName}
+                    </td>
+                    <td key={`category-${product.productId}`}>
+                      {product.productCategory}
+                    </td>
+                    <td key={`image-${product.productId}`}>
                       <img
                         src={product.productImage}
                         style={{ width: "100px" }}
                       ></img>
                     </td>
-                    <td>{product.productFreshness}</td>
-                    <td>{product.productDesc}</td>
-                    <td>{product.productPrice}</td>
+                    <td key={`freshness-${product.productId}`}>
+                      {product.productFreshness}
+                    </td>
+                    <td key={`description-${product.productId}`}>
+                      {product.productDesc}
+                    </td>
+                    <td key={`price-${product.productId}`}>
+                      {product.productPrice}
+                    </td>
                     <td>
                       <div className="d-grid gap-2 d-md-flex">
                         <Button className="btn btn-secondary" label="Edit" />
