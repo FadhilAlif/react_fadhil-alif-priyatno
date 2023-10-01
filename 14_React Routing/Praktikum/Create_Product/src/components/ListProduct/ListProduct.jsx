@@ -50,13 +50,13 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
                     </a>
                   </td>
                   <td>{product.productName}</td>
+                  <td>{product.productCategory}</td>
                   <td>
                     <img
                       src={product.productImage}
                       style={{ maxWidth: "200px", marginLeft: "20px" }}
                     ></img>
-                  </td> 
-                  <td>{product.productCategory}</td>
+                  </td>
                   <td>{product.productFreshness}</td>
                   <td>{product.productPrice}</td>
                   <td>
@@ -66,6 +66,13 @@ const ListProduct = ({ productsTable, setProductsTable }) => {
                         onClick={() => handleDelete(product.productId)}
                         className="btn btn-danger"
                         label="Delete"
+                      />
+                      <Button
+                        onClick={() =>
+                          handleClickDetail(`${product.productId}`, product)
+                        }
+                        className="btn btn-info text-white"
+                        label="Detail"
                       />
                     </div>
                   </td>
