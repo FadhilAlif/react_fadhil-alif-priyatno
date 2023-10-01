@@ -16,27 +16,6 @@ export const productSlice = createSlice({
     ],
   },
   reducers: {
-    // addProduct(state, action) {
-    //   // fungsi menambahkan data article ke store
-    //   console.log("state add product", state);
-    //   console.log("action add product", action);
-    //   const { payload } = action;
-    //   const product = {
-    //     id: payload.id,
-    //     productName: payload.productName,
-    //     productCategory: payload.productCategory,
-    //     productImage: payload.productImage,
-    //     productFreshness: payload.productFreshness,
-    //     productDesc: payload.productDesc,
-    //     productPrice: payload.productPrice,
-    //   };
-    //   // push data ke state
-    //   // state.push(article)
-
-    //   // melakukan penyalinan data lama dengan data baru
-    //   // return [...state.products, product];
-    //   state.products.push(product);
-    // },
     addProduct(state, action) {
       return {
         ...state,
