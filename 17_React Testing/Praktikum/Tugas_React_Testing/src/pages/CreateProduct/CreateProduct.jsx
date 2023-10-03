@@ -7,15 +7,15 @@ import DetailProduct from "../../components/DetailProduct/DetailProduct";
 import RandomNumber from "../../components/RandomNumber/RandomNumber";
 import ListProduct from "../../components/ListProduct/ListProduct";
 
-function CreateProduct({ setData }) {
+function CreateProduct() {
   // useEffect(() => {
   //   alert("Welcome to Create Product");
   // }, []);
 
   const [productsTableData, setProductsTableData] = useState([]);
-  useEffect(() => {
-    setData(productsTableData);
-  }, [productsTableData]);
+  // useEffect(() => {
+  //   setData(productsTableData);
+  // }, [productsTableData]);
 
   return (
     <div>

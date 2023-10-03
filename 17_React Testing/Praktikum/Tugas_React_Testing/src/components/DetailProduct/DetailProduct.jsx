@@ -30,7 +30,6 @@ const DetailProduct = ({ setProductsTable }) => {
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log("name " + name + " value " + value);
     setData((prev) => ({
       ...prev,
       [name]: value,
@@ -74,7 +73,7 @@ const DetailProduct = ({ setProductsTable }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const productNameRegex = /^[a-zA-Z0-9]{1,10}$/;
+    const productNameRegex = /^[a-zA-Z0-9@#{}]{1,10}$/;
     const productPriceRegex = /^[0-9]+$/;
 
     const error = {};
@@ -83,7 +82,7 @@ const DetailProduct = ({ setProductsTable }) => {
       error.productName = "Please enter a valid product name";
     } else if (!productNameRegex.test(data.productName)) {
       error.productName =
-        "Product name must be alphanumeric and 1-10 characters long";
+        "Product name must be alphanumeric, 1-10 characters long, and cannot contain special characters";
     }
 
     if (!data.productCategory) {
@@ -131,6 +130,7 @@ const DetailProduct = ({ setProductsTable }) => {
         <Input
           type="text"
           name="productName"
+          id="productName"
           className={`form-control ${errors.productName ? "is-invalid" : ""}`}
           value={data.productName}
           onChange={handleInput}
@@ -145,6 +145,7 @@ const DetailProduct = ({ setProductsTable }) => {
         </label>
         <select
           name="productCategory"
+          id="productCategory"
           value={data.productCategory}
           className={`form-select ${
             errors.productCategory ? "is-invalid" : ""
@@ -174,6 +175,7 @@ const DetailProduct = ({ setProductsTable }) => {
         <input
           className={`form-control ${errors.productImage ? "is-invalid" : ""}`}
           name="productImage"
+          id="productImage"
           type="file"
           accept="image/*"
           onChange={handleImageInput}
@@ -245,6 +247,7 @@ const DetailProduct = ({ setProductsTable }) => {
           rows={5}
           className={`form-control ${errors.productDesc ? "is-invalid" : ""}`}
           name="productDesc"
+          id="productDesc"
           value={data.productDesc}
           onChange={handleInput}
         />
@@ -260,6 +263,7 @@ const DetailProduct = ({ setProductsTable }) => {
           type="number"
           className={`form-control ${errors.productPrice ? "is-invalid" : ""}`}
           name="productPrice"
+          id="productPrice"
           value={data.productPrice}
           onChange={handleInput}
         />
