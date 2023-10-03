@@ -92,27 +92,21 @@ describe("CreateProduct", () => {
 
   // Test Product Image Masih Error
 
-  // it("Test Product Image Input", () => {
-  //   render(
-  //     <BrowserRouter>
-  //       <CreateProduct setProductsTable={() => {}} />
-  //     </BrowserRouter>
-  //   );
+  it("Test Product Image Input", () => {
+    const { getByLabelText } = render(
+      <BrowserRouter>
+        <CreateProduct setProductsTable={() => {}} />
+      </BrowserRouter>
+    );
+    const Image = getByLabelText("Image of Product");
 
-  //   const imageInput = screen.getByLabelText("Image of Product");
-  //   const submitButton = screen.getByText("Submit");
+    const file = new File(["image"], "image.png", {
+      type: "image/png",
+    });
+    fireEvent.change(Image, { target: { files: [file] } });
 
-  //   // Simulasikan perubahan input gambar
-  //   fireEvent.change(imageInput, {
-  //     target: {
-  //       files: [
-  //         new File(["test-image"], "test-image.png", { type: "image/png" }),
-  //       ],
-  //     },
-  //   });
-
-  //   fireEvent.click(submitButton);
-  // });
+    expect(Image.files[0]).toBe(file);
+  });
 
   it("Test Product Freshness Input", () => {
     render(

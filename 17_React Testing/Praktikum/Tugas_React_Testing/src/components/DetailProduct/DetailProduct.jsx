@@ -42,32 +42,43 @@ const DetailProduct = ({ setProductsTable }) => {
 
   const handleImageInput = (e) => {
     const file = e.target.files[0];
+
     if (file) {
-      const fileExtension = file.name.split(".").pop().toLowerCase();
-      if (!allowedImageExtensions.includes(fileExtension)) {
-        setErrors((prev) => ({
-          ...prev,
-          productImage: "Please select a valid image file (jpg, jpeg, png)",
-        }));
-        setImageFile(null);
-        return;
-      }
+      if (
+        typeof URL !== "undefined" &&
+        typeof URL.createObjectURL === "function"
+      ) {
+        const fileExtension = file.name.split(".").pop().toLowerCase();
 
-      if (file.size > maxImageSizeInBytes) {
-        setErrors((prev) => ({
-          ...prev,
-          productImage: "Image size exceeds 5MB limit",
-        }));
-        setImageFile(null);
-        return;
-      }
+        if (!allowedImageExtensions.includes(fileExtension)) {
+          setErrors((prev) => ({
+            ...prev,
+            productImage: "Please select a valid image file (jpg, jpeg, png)",
+          }));
+          setImageFile(null);
+          return;
+        }
 
-      setImageFile(file);
-      setData((prev) => ({
-        ...prev,
-        productImage: URL.createObjectURL(file),
-      }));
-      setErrors((prev) => ({ ...prev, productImage: "" }));
+        if (file.size > maxImageSizeInBytes) {
+          setErrors((prev) => ({
+            ...prev,
+            productImage: "Image size exceeds 5MB limit",
+          }));
+          setImageFile(null);
+          return;
+        }
+
+        setImageFile(file);
+        setData((prev) => ({
+          ...prev,
+          productImage: URL.createObjectURL(file),
+        }));
+        setErrors((prev) => ({ ...prev, productImage: "" }));
+      } else {
+        console.error(
+          "URL.createObjectURL is not supported in this environment."
+        );
+      }
     }
   };
 
@@ -113,6 +124,8 @@ const DetailProduct = ({ setProductsTable }) => {
       setData((prev) => ({ ...prev, productId: uuidNum() }));
       alert("Form submitted successfully");
       console.log(data);
+    } else {
+      alert("Please fill out all required fields");
     }
   };
 
