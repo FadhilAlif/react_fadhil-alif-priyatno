@@ -90,8 +90,6 @@ describe("CreateProduct", () => {
     expect(screen.getByText("Sneakers")).toBeInTheDocument();
   });
 
-  // Test Product Image Masih Error
-
   it("Test Product Image Input", () => {
     const { getByLabelText } = render(
       <BrowserRouter>
