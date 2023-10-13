@@ -1,4 +1,4 @@
-# Summary Basic Model OpenAI dan Prompt Engginer
+# Summary Perkenalan AI & OpenAI
 
 ## Artificial intelligence (AI)
 
