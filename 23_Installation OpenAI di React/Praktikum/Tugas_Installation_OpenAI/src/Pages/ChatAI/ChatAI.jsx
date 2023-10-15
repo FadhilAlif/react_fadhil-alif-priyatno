@@ -9,7 +9,7 @@ const ChatAI = () => {
   const [command, setCommand] = useState(""); // state input user
   const [loading, setLoading] = useState(false); // state loader untuk nunggu response dari openai
   const [result, setResult] = useState([]); // state untuk menyimpan response dari openai
-  //   const [image, setImage] = useState("");
+  const [image, setImage] = useState("");
 
   const openai = new OpenAI({
     apiKey: "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", // defaults to process.env["OPENAI_API_KEY"]
@@ -36,14 +36,14 @@ const ChatAI = () => {
     setLoading(false);
   };
 
-  // const handleGenerateImageByPrompt = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   // const file = e.target.files[0]
-  //   const imageRes = await openai.images.generate({ prompt: command });
-  //   setResult(imageRes.data);
-  //   setLoading(false);
-  // };
+  const handleGenerateImageByPrompt = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    // const file = e.target.files[0]
+    const resImage = await openai.images.generate({ prompt: command });
+    setImage(resImage.data[0].url);
+    setLoading(false);
+  };
   return (
     <div className="chat-container">
       <div className="chat-result">
@@ -69,7 +69,11 @@ const ChatAI = () => {
             ) : (
               <div></div>
             )}
-            {/* <p>{result}</p> */}
+            {image.length > 0 ? (
+              <img src={image} width={220} alt="respone image" />
+            ) : (
+              <div></div>
+            )}
           </div>
         )}
       </div>
@@ -87,6 +91,12 @@ const ChatAI = () => {
           className="submit-btn"
           text="Submit Text"
           onClick={(e) => handleSubmit(e)}
+        />
+        <Button
+          type="submit"
+          className="submit-btn"
+          text="Generate Image"
+          onClick={(e) => handleGenerateImageByPrompt(e)}
         />
       </div>
     </div>
