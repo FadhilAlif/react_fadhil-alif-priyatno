@@ -1,42 +1,30 @@
 import OpenAI from "openai";
 import { useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import TextArea from "../../components/TextArea/TextArea";
 import Button from "../../components/Button/index";
-import "./ChatAI.css";
+import TextArea from "../../components/TextArea/TextArea";
 
-const ChatAI = () => {
+const ImageAI = () => {
   const [command, setCommand] = useState(""); // state input user
   const [loading, setLoading] = useState(false); // state loader untuk nunggu response dari openai
-  const [result, setResult] = useState([]); // state untuk menyimpan response dari openai
-  //   const [image, setImage] = useState("");
+  const [image, setImage] = useState("");
 
   const openai = new OpenAI({
     apiKey: "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", // defaults to process.env["OPENAI_API_KEY"]
     dangerouslyAllowBrowser: true,
   });
 
-  const handleSubmit = async (e) => {
+  const handleGenerateImageByPrompt = async (e) => {
     e.preventDefault();
-    // TODO: handle openai completion
     setLoading(true);
-    const res = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "system", content: command }],
-      temperature: 1,
-      max_tokens: 256,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-    });
-    setResult(res.choices);
-    console.log("result ", res);
+    // const file = e.target.files[0]
+    const resImage = await openai.images.generate({ prompt: command });
+    setImage(resImage.data[0].url);
     setLoading(false);
   };
-
   return (
     <div className="chat-container">
-      <h2 className="text-center text-primary">CHAT BOT</h2>
+      <h2 className="text-center text-primary">IMAGE BOT</h2>
       <div className="chat-result">
         {loading ? (
           <ThreeDots
@@ -51,12 +39,8 @@ const ChatAI = () => {
           />
         ) : (
           <div className="result">
-            {result.length > 0 ? (
-              result?.map((item, index) => (
-                <div key={index}>
-                  <p>{item.message.content}</p>
-                </div>
-              ))
+            {image.length > 0 ? (
+              <img src={image} width={"100%"} alt="respone image" />
             ) : (
               <div></div>
             )}
@@ -69,18 +53,18 @@ const ChatAI = () => {
           id="command"
           value={command}
           onChange={(e) => setCommand(e.target.value)}
-          placeholder={"Masukkan Perintah..."}
+          placeholder={"Mau Gambar Apa..."}
           className="text-input"
         />
         <Button
           type="submit"
-          className="submit-btn"
-          text="Submit"
-          onClick={(e) => handleSubmit(e)}
+          className="btn btn-primary"
+          text="Generate Image"
+          onClick={(e) => handleGenerateImageByPrompt(e)}
         />
       </div>
     </div>
   );
 };
 
-export default ChatAI;
+export default ImageAI;

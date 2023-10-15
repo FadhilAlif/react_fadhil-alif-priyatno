@@ -1,11 +1,9 @@
 import OpenAI from "openai";
 import { useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import TextArea from "../../components/TextArea/TextArea";
 import Button from "../../components/Button/index";
-import "./ChatAI.css";
 
-const ChatAI = () => {
+const QuestionAnswerAI = () => {
   const [command, setCommand] = useState(""); // state input user
   const [loading, setLoading] = useState(false); // state loader untuk nunggu response dari openai
   const [result, setResult] = useState([]); // state untuk menyimpan response dari openai
@@ -22,7 +20,13 @@ const ChatAI = () => {
     setLoading(true);
     const res = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "system", content: command }],
+      messages: [
+        {
+          role: "system",
+          content:
+            'Saya adalah bot penjawab pertanyaan(Question and Answer) yang sangat cerdas. Jika Anda mengajukan pertanyaan yang berakar pada kebenaran, saya akan memberikan jawabannya. Jika Anda bertanya kepada saya pertanyaan yang tidak masuk akal, tidak ada di data, dan tidak memiliki jawaban yang jelas, saya akan menjawab "Ya Ndak Tau Kok Tanya Saya"\n\nQ : Apa Ibukota dari Indonesia?\nA : Ibukota Jakarta\n\nQ : Siapakah Presiden Indonesia?\nA : Presiden Indonesia adalah Joko Widodo.\n\nQ : Yogyakarta dikenal sebagai Kota?\nA : Kota Pelajar',
+        },
+      ],
       temperature: 1,
       max_tokens: 256,
       top_p: 1,
@@ -33,10 +37,9 @@ const ChatAI = () => {
     console.log("result ", res);
     setLoading(false);
   };
-
   return (
     <div className="chat-container">
-      <h2 className="text-center text-primary">CHAT BOT</h2>
+          <h2 className="text-center text-primary">QNA BOT</h2>
       <div className="chat-result">
         {loading ? (
           <ThreeDots
@@ -64,18 +67,10 @@ const ChatAI = () => {
         )}
       </div>
       <div className="input-container">
-        <TextArea
-          type="text"
-          id="command"
-          value={command}
-          onChange={(e) => setCommand(e.target.value)}
-          placeholder={"Masukkan Perintah..."}
-          className="text-input"
-        />
         <Button
           type="submit"
           className="submit-btn"
-          text="Submit"
+          text="Generate Q&A"
           onClick={(e) => handleSubmit(e)}
         />
       </div>
@@ -83,4 +78,4 @@ const ChatAI = () => {
   );
 };
 
-export default ChatAI;
+export default QuestionAnswerAI;
